@@ -9,14 +9,17 @@ module.exports = {
     getSingleUser(req, res) {
         User.find( {_id: req.params.userId})
         .select('-__v')
-        .populate('thought')
-        .populate('reactions')
+        .populate('thoughts')
+        .populate('friends')
         .then((user) => 
             !user
                 ? res.status(404).json({ message: 'No user with that ID' })
                 : res.json(user)
             )
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err)
+            })
     }, 
     // create a new user
     createUser(req, res) {
@@ -40,10 +43,10 @@ module.exports = {
     }, 
     deleteUser(req, res) {
         User.findOneAndDelete({ _id: req.params.userId })
-          .then((course) =>
-            !course
-              ? res.status(404).json({ message: 'No course with that ID' })
-              : Student.deleteMany({ _id: { $in: course.students } })
+          .then((user) =>
+            !user
+              ? res.status(404).json({ message: 'No user with that ID' })
+              : User.deleteMany({ _id: { $in: user.thoughts } })
           )
           .then(() => res.json({ message: 'Course and students deleted!' }))
           .catch((err) => res.status(500).json(err));
