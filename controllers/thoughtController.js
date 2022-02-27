@@ -14,9 +14,12 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : res.json(course)
+          : res.json(thought)
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err)
+      });
   },
   // Create a course
   createThought(req, res) {
@@ -33,7 +36,7 @@ module.exports = {
           ? res
               .status(404)
               .json({ message: 'Post created, but found no user with that ID' })
-          : res.json('Created the post 🎉')
+          : res.json('Created Thought 🎉')
       )
       .catch((err) => {
         console.log(err);
@@ -41,15 +44,24 @@ module.exports = {
       });
   },
   // Delete a course
+  // delete not working in User
+  // need to somehow update user array that the thought was deleted
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : Student.deleteMany({ _id: { $in: course.students } })
+          : User.findOneAndUpdate(
+            { videos: req.params.thoughtId },
+            { $pull: { thoughts: req.params.thoughtId } },
+            { new: true }
+          )
       )
-      .then(() => res.json({ message: 'Course and students deleted!' }))
-      .catch((err) => res.status(500).json(err));
+      .then(() => res.json({ message: 'Thought deleted!' }))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err)
+      });
   },
   // Update a course
   updateThought(req, res) {

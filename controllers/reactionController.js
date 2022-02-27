@@ -1,25 +1,32 @@
-const { Thought, Reaction } = require('../models');
-const thoughtController = require('./thoughtController');
+const Thought = require('../models/Thought');
 
 module.exports = {
-    createReaction( req, res) {
-        Reaction.create(req.body) 
-            .then((dbReactionData) => res.json(dbReactionData))
-            .catch((err) => res.status(500).json(err));
-    }, 
-    removeReaction(req, res) {
-        Thought.findOneAndUpdate(
-          { _id: req.params.studentId },
-          { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
-          { runValidators: true, new: true }
+  createReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with this id!' })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+  removeReaction(req, res) {
+      Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
+        { runValidators: true, new: true }
+      )
+        .then((thought) =>
+          !thought
+            ? res
+                .status(404)
+                .json({ message: 'No thought found with that ID :(' })
+            : res.json(thought)
         )
-          .then((student) =>
-            !student
-              ? res
-                  .status(404)
-                  .json({ message: 'No student found with that ID :(' })
-              : res.json(student)
-          )
-          .catch((err) => res.status(500).json(err));
-      }
+        .catch((err) => res.status(500).json(err));
+    }
 }
