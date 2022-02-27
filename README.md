@@ -23,7 +23,7 @@ In the future, a frontend portion of the aplication would be a nice additional f
 
 ## Github Link
 
-* https://github.com/truont2/Employee-Tracker-App
+* https://github.com/truont2/Social-Media-API
 
 ## Installation
 
@@ -37,15 +37,12 @@ To install this application:
 The application will be invoked by using the following command:
 
 ```bash
-node index.js
+node index.js 
 ```
 
 1. First download any dependencies by opening your index,js terminal and entering "npm install". 
-2. Once completed, you must enter mysql -u root -u and then provide your password for mysql. MySQL must be already downlaoded for this to work. If not donwloaded, go here: https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide 
-3. Once completed, in the terminal, type "SOURCE db/schema.sql then db/seeds.sql. This initializes the database compnay_db to be used. 
-4. enter node index.js to run the application. 
-5. Choose one of the available options provided in the list and answer any questions that come up to complete the task.
-6. Terminal will display a text to notifying the user that the desired task they chose has been completed altering the database in any way. If a user chooses to view data, a table will appear in the console.
+2. Once completed, you will need to download MongoDB and insomnia as well if you haven't done that yet. https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb
+3. Once completed, you are ready to use the application. 
 
 ### Video Walkthrough: 
 
@@ -71,5 +68,5 @@ To contribute, contact me at https://github.com/truont2/
 
 ## Resources 
 
-* https://www.youtube.com/watch?v=p3qvj9hO_Bo&t=1575s
-* https://www.youtube.com/watch?v=L72fhGm1tfE
+* https://mongoosejs.com/docs/guide.html
+* https://www.youtube.com/watch?v=DZBGEVgL2eE
