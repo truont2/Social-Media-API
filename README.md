@@ -1,13 +1,11 @@
 # Social-Media-API
 
-![badgeImg](https://shields.io/badge/license-MIT-green)
 ## Table of Contents
 - [Description](#description)
 - [Authors](#authors)
 - [Github Link](#github-link)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Test](#test)
 - [How to Contribute](#contribute)
 - [Resources](#resources)
 
@@ -29,7 +27,7 @@ In the future, a frontend portion of the aplication would be a nice additional f
 
 To install this application:
 1. clone the necessary files in the github repository.
-2. Open up the terminal in the index.js file where you will enter npm install. This will install the necessary packages needed to run this application. 
+2. Open up the terminal in the server.js file where you will open a new terminal and enter "npm install". This will install the necessary packages and dependancies needed to run this API. 
 3. Application is ready to be used. Refer to the Usage section for futher instructions.
 
 ## Usage
@@ -37,30 +35,32 @@ To install this application:
 The application will be invoked by using the following command:
 
 ```bash
-node index.js 
+node server.js 
 ```
 
-1. First download any dependencies by opening your index,js terminal and entering "npm install". 
+1. First download any dependencies by opening your index.js terminal and entering "npm install". 
 2. Once completed, you will need to download MongoDB and insomnia as well if you haven't done that yet. https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb
-3. Once completed, you are ready to use the application. 
+3. Once completed, you are ready to use the application by opening insomnia and creating the necessary routes to test the API. 
+4. Enter node server.js. This activates the server to create the connection to the database. 
+5. Open insomnia
+6. Create routes for each table and their purpose(delete, update, get)
+7. Run the routes with the correct host to use the database. All routes start off with http://localhost:3001/api
+8. End server by doing Ctrl-C in the terminal
 
 ### Video Walkthrough: 
 
 This video shows the steps to install any packages and run the application after the reposition has been cloned.
 
-Set up Database
-![video walkthrough](./assets/sql.gif)
-
 Use the application: 
-![video walkthrough](./assets/functionality.gif)
 
-## Test 
+- Users: 
+![video walkthrough](./assets/usersfriends.gif)
 
-screenshot of some options to choose from:
+- Thoughts
+![video walkthrough](./assets/thoughts.gif)
 
-![screenshot](./assets/mainMenu.PNG)
-![screenshot](./assets/allemployees.PNG)
-![screenshot](./assets/roles.PNG)
+- Reactions
+![video walkthrough](./assets/reaction.gif)
 
 ## Contribute
 

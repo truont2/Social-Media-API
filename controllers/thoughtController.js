@@ -71,10 +71,13 @@ module.exports = {
       { runValidators: true, new: true }
     )
       .then((thought) =>
-        !course
+        !thought
           ? res.status(404).json({ message: 'No thought with this id!' })
-          : res.json(course)
+          : res.json(thought)
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err)
+      });
   },
 };
