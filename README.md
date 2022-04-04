@@ -60,7 +60,7 @@ Use the application:
 ![video walkthrough](./assets/thoughts.gif)
 
 - Reactions
-![video walkthrough](./assets/reaction.gif)
+![video walkthrough](./assets/reactions.gif)
 
 ## Contribute
 
