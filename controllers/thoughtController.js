@@ -4,10 +4,10 @@ module.exports = {
   // Get all courses
   getThoughts(req, res) {
     Thought.find()
-      .then((courses) => res.json(courses))
+      .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-  // Get a course
+  // Get a single thought
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .select('-__v')
@@ -21,7 +21,7 @@ module.exports = {
         res.status(500).json(err)
       });
   },
-  // Create a course
+  // Create a thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
@@ -43,7 +43,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  // Delete a course
+  // Delete a thought
   // delete not working in User
   // need to somehow update user array that the thought was deleted
   deleteThought(req, res) {
@@ -63,7 +63,7 @@ module.exports = {
         res.status(500).json(err)
       });
   },
-  // Update a course
+  // Update a Thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },

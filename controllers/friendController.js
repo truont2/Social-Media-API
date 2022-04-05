@@ -6,6 +6,7 @@ module.exports ={
         console.log(req.body);
         User.findOneAndUpdate(
           { _id: req.params.userId },
+          // add to set is a complex command that is built in to mongoose
           { $addToSet: { friends: req.params.friendId } },
           { runValidators: true, new: true }
         )
