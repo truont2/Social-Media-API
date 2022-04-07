@@ -51,11 +51,8 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : User.findOneAndUpdate(
-            { videos: req.params.thoughtId },
-            { $pull: { thoughts: req.params.thoughtId } },
-            { new: true }
-          )
+          // delete all the reactions that were associated with that though since it doesn't exist anymore
+          : Thought.deleteMany({_id: {$in: thought.reactions }})
       )
       .then(() => res.json({ message: 'Thought deleted!' }))
       .catch((err) => {
