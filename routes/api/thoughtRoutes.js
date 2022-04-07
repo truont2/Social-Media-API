@@ -1,5 +1,8 @@
 const router = require('express').Router();
 
+// create all the database function actions in the controllers while in the routes folder you can define the routes
+// usually everything is done in the controllers folder but this is another method of separating things out.
+
 const {
     getThoughts, 
     getSingleThought, 
